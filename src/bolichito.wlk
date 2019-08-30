@@ -1,4 +1,3 @@
-import objetos.*
 
 object bolichito {
 	var objetoEnMostrador
@@ -8,8 +7,8 @@ object bolichito {
 	method ponerEnVidriera(objeto) { objetoEnVidriera = objeto }
 	
 	method esBrillante() { 
-		const elDeMostradorBrilla = true   // implementar
-		const elDeVidrieraBrilla = true   // implementar
+		const elDeMostradorBrilla = objetoEnMostrador.material().btilla()
+		const elDeVidrieraBrilla = objetoEnVidriera.material().brilla()
 		return elDeMostradorBrilla and elDeVidrieraBrilla
 	}
 	
@@ -18,14 +17,24 @@ object bolichito {
 	}
 	
 	method estaDesequilibrado() {
-		// completar
+		return objetoEnMostrador.peso() > objetoEnVidriera.peso()
 	}
 	
 	method tieneAlgoDeColor(color) {
-		// completar
+		return objetoEnMostrador.color() == color 
+		or objetoEnVidriera.color() == color
+	}
+
+	method puedeMjeorar() {
+		return self.estaDesequilibrado() or self.esMonocromatico()
 	}
 
 	method puedeOfrecerleAlgoA(persona) {
-		// completar
+		return persona.leGusta(objetoEnMostrador)
+		or persona.leGusta(objetoEnVidriera)
 	}
 }
+
+
+
+
